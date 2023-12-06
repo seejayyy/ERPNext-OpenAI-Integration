@@ -6,39 +6,31 @@ from __future__ import unicode_literals
 import frappe,json
 from frappe.model.document import Document
 from frappe import _
+import openai
+from frappe.integrations.utils import make_post_request
 
 class AssistBotSettings(Document):
 	pass
 
 @frappe.whitelist()
 def verify_key(doc):
+	# turn str into json object
 	doc = json.loads(doc)
+	# obtain key
 	key = doc["openai_api_key"]
-
-	# try:
-	# 	response = openai.Completion.create(
-	# 		engine="davinci",
-    #         prompt="This is a test.",
-    #         max_tokens=5
-	# 	)
-	# except:
-	# 	return False
-	# else:
-	# 	return True
-
-	frappe.msgprint(_("API key is valid."))
- 
- 
-	# try:
-	# 	response = openai.Completion.create(
-	# 		engine="davinci",
-	# 		prompt="This is a test.",
-	# 		max_tokens=5
-	# 	)
-	# except:
-	# 	frappe.msgprint(_("Invalid API key."))
-	# else:
-	# 	frappe.msgprint(_("API key is valid."))
- 	
-
-	#return delete
+	url = 'https://api.openai.com/v1/chat/completions'
+	headers = {
+		'Content-type': 'application/json;',
+		'Authorization': 'Bearer ' + key,
+	}
+	data = json.dumps({
+		"model": "gpt-3.5-turbo",
+		"messages": [{"role": "user", "content": "Say this is a test!"}],
+		"temperature": 0.7
+	})
+	try:
+		output = make_post_request(url, headers=headers, data=data)
+	except:
+		frappe.msgprint(_("Invalid Key"))
+	else:
+		frappe.msgprint(_("Key is valid"))

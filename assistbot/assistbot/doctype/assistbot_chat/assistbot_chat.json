@@ -5,7 +5,7 @@
  "engine": "InnoDB",
  "field_order": [
   "assistbot_chatbox",
-  "assistbot_submit"
+  "assistbot_execute"
  ],
  "fields": [
   {
@@ -14,13 +14,13 @@
    "label": "AssistBot ChatBox"
   },
   {
-   "fieldname": "assistbot_submit",
+   "fieldname": "assistbot_execute",
    "fieldtype": "Button",
-   "label": "Submit"
+   "label": "Execute"
   }
  ],
  "issingle": 1,
- "modified": "2023-12-04 16:17:37.611342",
+ "modified": "2023-12-06 16:22:56.578432",
  "modified_by": "Administrator",
  "module": "AssistBot",
  "name": "AssistBot Chat",
