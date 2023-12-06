@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include assistbot *.css
+recursive-include assistbot *.csv
+recursive-include assistbot *.html
+recursive-include assistbot *.ico
+recursive-include assistbot *.js
+recursive-include assistbot *.json
+recursive-include assistbot *.md
+recursive-include assistbot *.png
+recursive-include assistbot *.py
+recursive-include assistbot *.svg
+recursive-include assistbot *.txt
+recursive-exclude assistbot *.pyc
