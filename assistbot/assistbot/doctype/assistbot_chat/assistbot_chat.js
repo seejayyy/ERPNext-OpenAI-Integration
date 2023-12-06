@@ -2,9 +2,9 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('AssistBot Chat', {
-	submit_message: function(frm){
+	assistbot_execute(frm){
 		frm.call({
-			method:"submit_message",
+			method:"execute_instruction",
 			args:{
 				doc:frm.doc
 			},

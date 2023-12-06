@@ -6,7 +6,6 @@ from __future__ import unicode_literals
 import frappe,json
 from frappe.model.document import Document
 from frappe import _
-import openai
 from frappe.integrations.utils import make_post_request
 
 class AssistBotSettings(Document):
